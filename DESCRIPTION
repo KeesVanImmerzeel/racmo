@@ -1,9 +1,17 @@
 Package: racmo
-Title: What the Package Does (One Line, Title Case)
+Title: Download and Process RACMO NetCDF Data as Terra Raster Stacks
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person(given = "Kees",
+           family = "van Immerzeel",
+           role = c("aut", "cre"),
+           email = "c.h.van.immerzeel@gmail.com",
+           comment = c(ORCID = "https://orcid.org/0000-0003-0926-3248"))
+Description: Provides functions to download and read NetCDF files from the KNMI Data Platform
+    (<https://dataplatform.knmi.nl/dataset/knmi23-droogtestatistiek-1-0>), which contain
+    meteorological data from RACMOv2.3 used for STOWA drought statistics. The package
+    converts these files into projected 'terra' SpatRaster stacks with time-based layer names
+    for further spatial analysis and visualization.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -13,3 +21,9 @@ Suggests:
 Depends: 
     R (>= 3.5)
 LazyData: true
+Imports: 
+    CFtime,
+    httr,
+    jsonlite,
+    ncdf4,
+    terra

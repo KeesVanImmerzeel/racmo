@@ -1,25 +1,31 @@
-
 # racmo
 
-<!-- badges: start -->
-<!-- badges: end -->
+**racmo** is an R package that provides tools to **download and process meteorological data** from **RACMOv2.3** (KNMI Data Platform), used for **STOWA drought statistics**.
 
-The goal of racmo is to ...
+---
+
+## Features
+
+- **Retrieve file lists** from the KNMI API  
+  → `get_filenames()`
+
+- **Download and convert NetCDF files** into projected `SpatRaster` stacks  
+  → `download_and_load_raster()`
+
+---
+
+## Data Source
+
+The package uses data from the KNMI dataset:  
+`url` → KNMI Data Platform
+
+---
 
 ## Installation
 
-You can install the development version of racmo like so:
+```r
+# Install from source
+devtools::install_github("KeesVanImmerzeel/racmo")
 
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
-```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(racmo)
-## basic example code
-```
 
