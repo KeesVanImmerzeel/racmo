@@ -2,6 +2,8 @@
 
 **racmo** is an R package that provides tools to **download and process meteorological data** from **RACMOv2.3** (KNMI Data Platform), used for **STOWA drought statistics**.
 
+<img width="1268" height="635" alt="Image" src="https://github.com/user-attachments/assets/a3b3d8fb-e1bc-4568-81a1-a125bbfb190d" />
+
 ---
 
 ## Features
