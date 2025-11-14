@@ -118,14 +118,27 @@ download_and_load_raster <- function(filename, varid = "precip", token, url) {
   # Read NetCDF and extract data
   nc <- ncdf4::nc_open(local_path)                              # ncdf4
   dat <- ncdf4::ncvar_get(nc, varid)                            # ncdf4
-  rlon <- range(ncdf4::ncvar_get(nc, varid = "lon"))      # ncdf4, base
-  rlat <- range(ncdf4::ncvar_get(nc, varid = "lat"))      # ncdf4, base
-  ext <- terra::ext(c(rlon, rlat))                        # terra, base
+
+  # Create extent
+  x_min <- -40000
+  y_min <- 230000
+  cell_size <- 10000
+  ncols <- ncol(dat)
+  nrows <- nrow(dat)
+  # Calculate max coordinates
+  x_max <- x_min + (ncols * cell_size)
+  y_max <- y_min + (nrows * cell_size)
+  e <- terra::ext(x_min, x_max, y_min, y_max)
+
+  #rlon <- range(ncdf4::ncvar_get(nc, varid = "lon"))      # ncdf4, base
+  #rlat <- range(ncdf4::ncvar_get(nc, varid = "lat"))      # ncdf4, base
+  #ext <- terra::ext(c(rlon, rlat))                        # terra, base
 
   # Create raster stack and project
-  rstack <- terra::rast(dat, extent = ext)                      # terra
-  terra::crs(rstack) <- "EPSG:4326"                             # terra
-  rstack <- terra::project(rstack, "EPSG:28992")                # terra
+  rstack <- terra::rast(dat, extent = e)                      # terra
+  #terra::crs(rstack) <- "EPSG:4326"                             # terra
+  #rstack <- terra::project(rstack, "EPSG:28992")                # terra
+  terra::crs(rstack) <- "EPSG:28992"
 
   # Extract time dimension info
   time_vals <- nc$dim$time$vals
