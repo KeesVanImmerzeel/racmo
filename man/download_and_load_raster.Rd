@@ -35,10 +35,15 @@ This function:
 }
 \examples{
 \dontrun{
-rstack <- download_and_load_raster("example.nc", varid = "precip",
-                                    token = "YOUR_TOKEN",
-                                    url = "https://example.com/api")
-terra::plot(rstack)
+st <- download_and_load_raster(filename, varid="precip", token, url)
+Write the rasters as separate "tif" files (maximum of 9 files).
+out_dir <- "c:/tmp"
+fnames <- file.path(out_dir, paste0(names(st), ".tif"))
+n <- min(length(fnames), 9)
+st <- st[[1:n]]
+fnames <- fnames[1:n]
+terra::writeRaster(st, fnames, overwrite=TRUE)
+terra::plot(st)
 }
 
 }

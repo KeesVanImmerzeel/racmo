@@ -24,10 +24,13 @@ Parses the JSON response and returns a data frame of file information.
 }
 \examples{
 \dontrun{
-url <- "https://example.com/api/files"
-token <- "YOUR_BEARER_TOKEN"
-df <- get_filenames(url, maxKeys = 500, sorting = "desc", token = token)
-head(df)
+download filenames and apply a filter to create a single filename.
+df <- get_filenames(url, maxKeys = 100000, sorting = "asc", token)
+df <- df[grepl("RACMO23\\\\.nc$", df$filename), ]
+df <- df[grepl("^optimalslice_2050Md", df$filename), ]
+df <- df[grepl("Wetterskip-Fryslan|Waterschap-Noorderzijlvest",
+df$filename), ]
+filename <- head(df$filename, 1)
 }
 
 }
