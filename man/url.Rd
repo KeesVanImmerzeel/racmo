@@ -11,6 +11,6 @@ character
 url
 }
 \description{
-URL to the files of KNMI23 droogte statistiek
+url of the KNMI Data Platform
 }
 \keyword{datasets}
