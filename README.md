@@ -18,8 +18,8 @@
 
 ## Data Source
 
-The following url to the KNMI data platform is defined as a character string in the package:  
-`url` 
+The following url to the KNMI data platform is defined as a character string named `url` in the package:  
+`https://dataplatform.knmi.nl/dataset/knmi23-droogtestatistiek-1-0` 
 
 ---
 
